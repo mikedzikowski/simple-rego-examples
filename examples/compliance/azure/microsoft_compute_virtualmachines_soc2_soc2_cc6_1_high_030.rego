@@ -16,7 +16,7 @@ result = "skip" if {
 # Pass if not using default admin username
 result = "pass" if {
     input.resource_type == "Microsoft.Compute/virtualMachines"
-    input.configuration.osProfile.adminUsername
-    input.configuration.osProfile.adminUsername != "admin"
-    input.configuration.osProfile.adminUsername != "administrator"
+    input.configuration.properties.osProfile.adminUsername
+    input.configuration.properties.osProfile.adminUsername != "admin"
+    input.configuration.properties.osProfile.adminUsername != "administrator"
 }

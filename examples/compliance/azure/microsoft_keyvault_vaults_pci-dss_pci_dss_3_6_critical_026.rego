@@ -16,5 +16,5 @@ result = "skip" if {
 # Pass if access is explicitly denied
 result = "pass" if {
     input.resource_type == "Microsoft.KeyVault/vaults"
-    input.configuration.networkAcls.defaultAction == "Deny"
+    input.configuration.properties.networkAcls.defaultAction == "Deny"
 }

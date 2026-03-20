@@ -13,8 +13,8 @@ result = "skip" if {
     input.resource_type != "Microsoft.Compute/virtualMachines"
 }
 
-# Pass if security control is properly configured
+# Pass if disk encryption is enabled (using CrowdStrike insights)
 result = "pass" if {
     input.resource_type == "Microsoft.Compute/virtualMachines"
-    input.configuration.storageProfile.osDisk.encryptionSettings.enabled == true
+    input.cloud_context.insights.details.encryptedAtRest.value == true
 }

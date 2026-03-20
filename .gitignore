@@ -17,6 +17,7 @@ secrets.json
 api_keys.txt
 tokens.txt
 bearer_token.txt
+apiexample.txt
 *_token
 *_key
 *_secret

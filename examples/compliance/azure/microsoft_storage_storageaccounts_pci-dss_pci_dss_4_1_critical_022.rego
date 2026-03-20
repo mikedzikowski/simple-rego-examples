@@ -16,5 +16,5 @@ result = "skip" if {
 # Pass if Microsoft Storage encryption is used
 result = "pass" if {
     input.resource_type == "Microsoft.Storage/storageAccounts"
-    input.configuration.encryption.keySource == "Microsoft.Storage"
+    input.configuration.properties.encryption.keySource == "Microsoft.Storage"
 }

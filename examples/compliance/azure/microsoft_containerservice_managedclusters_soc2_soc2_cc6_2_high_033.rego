@@ -16,5 +16,5 @@ result = "skip" if {
 # Pass if security control is properly configured
 result = "pass" if {
     input.resource_type == "Microsoft.ContainerService/managedClusters"
-    input.configuration.aadProfile.managed == true
+    input.configuration.properties.aadProfile.managed == true
 }

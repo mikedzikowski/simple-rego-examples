@@ -29,8 +29,8 @@ result = "pass" if {
 
 # Helper function: Check if encryption is properly configured
 encryption_enabled {
-    input.configuration.encryptionConfiguration
-    input.configuration.encryptionConfiguration.encryptionType
+    input.supplementaryConfiguration.BucketEncryptionConfiguration
+    input.supplementaryConfiguration.BucketEncryptionConfiguration.rules
 }
 
 encryption_enabled {
@@ -44,11 +44,11 @@ public_access_blocked {
 }
 
 public_access_blocked {
-    input.configuration.publicAccessBlockConfiguration
-    input.configuration.publicAccessBlockConfiguration.blockPublicAcls == true
-    input.configuration.publicAccessBlockConfiguration.ignorePublicAcls == true
-    input.configuration.publicAccessBlockConfiguration.blockPublicPolicy == true
-    input.configuration.publicAccessBlockConfiguration.restrictPublicBuckets == true
+    input.supplementaryConfiguration.BucketPublicAccessBlockConfiguration
+    input.supplementaryConfiguration.BucketPublicAccessBlockConfiguration.blockPublicAcls == true
+    input.supplementaryConfiguration.BucketPublicAccessBlockConfiguration.ignorePublicAcls == true
+    input.supplementaryConfiguration.BucketPublicAccessBlockConfiguration.blockPublicPolicy == true
+    input.supplementaryConfiguration.BucketPublicAccessBlockConfiguration.restrictPublicBuckets == true
 }
 
 # Helper function: Check required tags are present
@@ -60,6 +60,6 @@ required_tags_present {
 
 # Helper function: Check if versioning is enabled
 versioning_enabled {
-    input.configuration.versioningConfiguration
-    input.configuration.versioningConfiguration.status == "Enabled"
+    input.supplementaryConfiguration.BucketVersioningConfiguration
+    input.supplementaryConfiguration.BucketVersioningConfiguration.status == "Enabled"
 }

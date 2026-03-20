@@ -16,5 +16,5 @@ result = "skip" if {
 # Pass if security control is properly configured
 result = "pass" if {
     input.resource_type == "AWS::S3::Bucket"
-    input.configuration.publicAccessBlockConfiguration.restrictPublicBuckets == true
+    input.supplementaryConfiguration.BucketPublicAccessBlockConfiguration.restrictPublicBuckets == true
 }

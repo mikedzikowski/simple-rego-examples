@@ -13,8 +13,8 @@ result = "skip" if {
     input.resource_type != "compute.googleapis.com/Instance"
 }
 
-# Pass if security control is properly configured
+# Pass if no external IP is configured (no accessConfigs)
 result = "pass" if {
     input.resource_type == "compute.googleapis.com/Instance"
-    input.configuration.networkInterfaces.accessConfigs
+    not input.configuration.networkInterfaces.accessConfigs
 }

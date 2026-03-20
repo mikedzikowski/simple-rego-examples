@@ -13,8 +13,8 @@ result = "skip" if {
     input.resource_type != "OCI::ContainerEngine::Cluster"
 }
 
-# Pass if security control is properly configured
+# Pass if API server is not publicly accessible (no public endpoint)
 result = "pass" if {
     input.resource_type == "OCI::ContainerEngine::Cluster"
-    input.configuration.endpoints.publicEndpoint
+    not input.configuration.endpoints.publicEndpoint
 }

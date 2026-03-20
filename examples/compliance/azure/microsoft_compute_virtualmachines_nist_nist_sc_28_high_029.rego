@@ -13,9 +13,8 @@ result = "skip" if {
     input.resource_type != "Microsoft.Compute/virtualMachines"
 }
 
-# Pass if using SSD for better security performance
+# Pass if information is protected at rest (using CrowdStrike insights)
 result = "pass" if {
     input.resource_type == "Microsoft.Compute/virtualMachines"
-    input.configuration.storageProfile.osDisk.managedDisk.storageAccountType
-    contains(input.configuration.storageProfile.osDisk.managedDisk.storageAccountType, "SSD")
+    input.cloud_context.insights.details.encryptedAtRest.value == true
 }

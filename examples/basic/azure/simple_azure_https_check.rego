@@ -13,5 +13,5 @@ result = "skip" if {
 # Pass if HTTPS is enforced
 result = "pass" if {
     input.resource_type == "Microsoft.Storage/storageAccounts"
-    input.configuration.enableHttpsTrafficOnly == true
+    input.configuration.properties.supportsHttpsTrafficOnly == true
 }

@@ -13,5 +13,5 @@ result = "skip" if {
 # Pass if access policies exist
 result = "pass" if {
     input.resource_type == "Microsoft.KeyVault/vaults"
-    count(input.configuration.accessPolicies) > 0
+    count(input.configuration.properties.accessPolicies) > 0
 }

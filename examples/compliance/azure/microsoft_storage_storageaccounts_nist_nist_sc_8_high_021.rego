@@ -16,5 +16,5 @@ result = "skip" if {
 # Pass if minimum TLS 1.2 is required
 result = "pass" if {
     input.resource_type == "Microsoft.Storage/storageAccounts"
-    input.configuration.minimumTlsVersion == "TLS1_2"
+    input.configuration.properties.minimumTlsVersion == "TLS1_2"
 }

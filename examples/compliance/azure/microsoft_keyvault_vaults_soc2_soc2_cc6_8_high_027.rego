@@ -16,5 +16,5 @@ result = "skip" if {
 # Pass if security control is properly configured
 result = "pass" if {
     input.resource_type == "Microsoft.KeyVault/vaults"
-    input.configuration.enableRbacAuthorization == true
+    input.configuration.properties.enableRbacAuthorization == true
 }

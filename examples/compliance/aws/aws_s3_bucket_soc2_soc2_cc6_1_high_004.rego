@@ -16,7 +16,7 @@ result = "skip" if {
 # Pass if security policy exists
 result = "pass" if {
     input.resource_type == "AWS::S3::Bucket"
-    input.configuration.bucketPolicy
-    input.configuration.bucketPolicy != ""
-    input.configuration.bucketPolicy != null
+    input.supplementaryConfiguration.BucketPolicy
+    input.supplementaryConfiguration.BucketPolicy != ""
+    input.supplementaryConfiguration.BucketPolicy != null
 }

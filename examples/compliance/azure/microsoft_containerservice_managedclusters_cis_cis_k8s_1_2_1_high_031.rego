@@ -16,11 +16,11 @@ result = "skip" if {
 # Pass if security configuration exists
 result = "pass" if {
     input.resource_type == "Microsoft.ContainerService/managedClusters"
-    input.configuration.apiServerAccessProfile.authorizedIPRanges
+    input.configuration.properties.apiServerAccessProfile.authorizedIPRanges
 }
 
 result = "pass" if {
     input.resource_type == "Microsoft.ContainerService/managedClusters"
-    input.configuration.apiServerAccessProfile.authorizedIPRanges
-    count(input.configuration.apiServerAccessProfile.authorizedIPRanges) > 0
+    input.configuration.properties.apiServerAccessProfile.authorizedIPRanges
+    count(input.configuration.properties.apiServerAccessProfile.authorizedIPRanges) > 0
 }

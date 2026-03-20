@@ -166,7 +166,6 @@ curl -X POST 'https://api.crowdstrike.com/cloud-policies/entities/evaluation/v1'
 
 - [comprehensive_security_generator.py](../comprehensive_security_generator.py) - Multi-framework policy generator
 - [SECURITY_REVIEW_REPORT.md](../SECURITY_REVIEW_REPORT.md) - Security analysis report
-- [apiexample.txt](../apiexample.txt) - CrowdStrike API documentation with real schemas
 - [CrowdStrike API Documentation](https://falcon.crowdstrike.com/documentation)
 
 ---

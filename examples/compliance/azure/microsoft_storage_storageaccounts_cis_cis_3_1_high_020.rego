@@ -16,5 +16,5 @@ result = "skip" if {
 # Pass if security control is properly configured
 result = "pass" if {
     input.resource_type == "Microsoft.Storage/storageAccounts"
-    input.configuration.enableHttpsTrafficOnly == true
+    input.configuration.properties.supportsHttpsTrafficOnly == true
 }

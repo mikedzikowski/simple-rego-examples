@@ -13,8 +13,8 @@ result = "skip" if {
     input.resource_type != "Microsoft.Storage/storageAccounts"
 }
 
-# Pass if setting is disabled for security
+# Pass if network access is restricted (defaultAction Deny indicates restricted access)
 result = "pass" if {
     input.resource_type == "Microsoft.Storage/storageAccounts"
-    input.configuration.allowBlobPublicAccess == false
+    input.configuration.properties.networkAcls.defaultAction == "Deny"
 }

@@ -8,7 +8,7 @@ A comprehensive collection of **61 security policy examples** for CrowdStrike Fa
 ## 📋 What's Included
 
 - **8 Basic Examples**: Simple policies for learning Rego fundamentals
-- **5 Advanced Examples**: Production-ready policies with helper functions and violation reporting
+- **5 Advanced Examples**: Advanced examples with helper functions and violation reporting
 - **48 Compliance Examples**: Multi-framework policies mapped to CIS, NIST 800-53, SOC2, and PCI-DSS
 
 ## 🚀 Quick Start
@@ -17,6 +17,35 @@ A comprehensive collection of **61 security policy examples** for CrowdStrike Fa
 2. All policies use modern Rego syntax compatible with Open Policy Agent (OPA)
 3. Files follow consistent lowercase naming conventions
 4. Schemas have been validated against real CrowdStrike resource data
+
+## 📝 Basic Example
+
+Here's a simple S3 public access policy to get you started:
+
+```rego
+package crowdstrike
+
+# Simple S3 Public Access Check
+# Description: Basic example to check if S3 bucket allows public access
+
+default result := "fail"
+
+# Skip non-S3 resources
+result = "skip" if {
+    input.resource_type != "AWS::S3::Bucket"
+}
+
+# Pass if public access is blocked
+result = "pass" if {
+    input.resource_type == "AWS::S3::Bucket"
+    input.configuration.publicAccessBlockConfiguration.blockPublicAcls == true
+}
+```
+
+This policy demonstrates the core pattern:
+- **Default to fail**: Security-first approach
+- **Resource filtering**: Skip irrelevant resources
+- **Clear validation**: Simple pass condition
 
 ## 📁 Directory Structure
 
@@ -27,7 +56,7 @@ examples/
 │   ├── azure/
 │   ├── gcp/
 │   └── oci/
-├── advanced/       # Production-ready examples
+├── advanced/       # Advanced examples
 │   ├── aws/
 │   ├── azure/
 │   ├── gcp/

@@ -12,29 +12,29 @@ result = "skip" if {
 
 # Helper function to check encryption status
 is_encrypted(storage) if {
-    storage.configuration.encryption.services.blob.enabled == true
-    storage.configuration.encryption.services.file.enabled == true
+    storage.configuration.properties.encryption.services.blob.enabled == true
+    storage.configuration.properties.encryption.services.file.enabled == true
 }
 
 # Helper function to check network access
 has_network_restrictions(storage) if {
-    storage.configuration.networkAcls.defaultAction == "Deny"
-    count(storage.configuration.networkAcls.virtualNetworkRules) > 0
+    storage.configuration.properties.networkAcls.defaultAction == "Deny"
+    count(storage.configuration.properties.networkAcls.virtualNetworkRules) > 0
 }
 
 # Pass if all security requirements are met
 result = "pass" if {
     input.resource_type == "Microsoft.Storage/storageAccounts"
-    input.configuration.enableHttpsTrafficOnly == true
+    input.configuration.properties.supportsHttpsTrafficOnly == true
     is_encrypted(input)
     has_network_restrictions(input)
-    input.configuration.allowBlobPublicAccess == false
+    input.configuration.properties.allowBlobPublicAccess == false
 }
 
 # Provide specific failure reasons
 violation contains msg if {
     input.resource_type == "Microsoft.Storage/storageAccounts"
-    input.configuration.enableHttpsTrafficOnly != true
+    input.configuration.properties.supportsHttpsTrafficOnly != true
     msg := "HTTPS traffic not enforced"
 }
 
