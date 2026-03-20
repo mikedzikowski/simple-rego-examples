@@ -1,7 +1,7 @@
 # CrowdStrike Rego Policy Examples
 
 > **⚠️ Community Repository Disclaimer**
-> This is a **community-built repository** created with assistance from Claude AI and is **not officially supported by CrowdStrike**. These policy examples are provided for educational and reference purposes. For official support, documentation, and production-ready policies, please refer to [CrowdStrike's official documentation](https://falcon.crowdstrike.com/documentation) and support channels.
+> This is a **community-built repository** created with assistance from Claude AI and is **not officially supported by CrowdStrike**. These policy examples are provided for educational and reference purposes. For official support, documentation, and production-ready policies, please refer to CrowdStrike's official documentation and support channels.
 
 A comprehensive collection of **61 security policy examples** for CrowdStrike Falcon Cloud Security Posture Management (CSPM), organized by complexity and compliance frameworks.
 
