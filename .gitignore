@@ -1,0 +1,93 @@
+# Working files and scripts directory
+working_files/
+
+# Sensitive Information
+*.env
+*.env.*
+.env.local
+.env.production
+config.json
+credentials.json
+secrets.json
+*secret*
+*credential*
+*password*
+
+# API Keys and Tokens
+api_keys.txt
+tokens.txt
+bearer_token.txt
+*_token
+*_key
+*_secret
+
+# CrowdStrike Specific
+falcon_*.json
+crowdstrike_*.json
+customer_id.txt
+user_id.txt
+cid.txt
+
+# Certificates and Keys
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cert
+id_rsa*
+*.ssh/
+
+# Scripts and automation files
+*.py
+*.sh
+
+# Generated files and reports
+*.md
+!README.md
+!examples/README.md
+
+# Discovery and generation results
+discovered_resource_types_*.json
+*_summary_*.json
+*.json
+!package.json
+
+# Temporary and Generated Files
+*.tmp
+*.log
+*.cache
+temp/
+tmp/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+venv/
+env/
+
+# IDE and Editor Files
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Generated Policy Collections
+generated_policies_*/
+logical_policies_*/
+*_original_backup/
+security_posture_policies_*/
+
+# Runtime and Process Files
+*.pid
+nohup.out
