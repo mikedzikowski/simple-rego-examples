@@ -6,9 +6,6 @@ package crowdstrike
 # Severity: HIGH
 # Description: IAM access keys should be rotated every 180 days
 
-import future.keywords.if
-import future.keywords.in
-
 # Helper to convert ISO timestamp to nanoseconds since epoch
 time_parse_iso(date_string) := time.parse_rfc3339_ns(date_string)
 
@@ -21,25 +18,25 @@ today_ns := time.parse_rfc3339_ns("2026-03-25T00:00:00Z")
 default result := "fail"
 
 # Skip non-AWS::IAM::User resources
-result = "skip" if {
+result = "skip" {
     input.resource_type != "AWS::IAM::User"
 }
 
 # Pass if no credential report exists
-result = "pass" if {
+result = "pass" {
     input.resource_type == "AWS::IAM::User"
     not input.enrichment_iam_credentialreport
 }
 
 # Pass if access key is not active or doesn't exist
-result = "pass" if {
+result = "pass" {
     input.resource_type == "AWS::IAM::User"
     input.enrichment_iam_credentialreport
     not input.enrichment_iam_credentialreport.configuration.accessKey1Active
 }
 
 # Pass if access key was rotated within 180 days
-result = "pass" if {
+result = "pass" {
     input.resource_type == "AWS::IAM::User"
     input.enrichment_iam_credentialreport.configuration.accessKey1Active == true
     rotation_date := input.enrichment_iam_credentialreport.configuration.accessKey1LastRotated
@@ -60,7 +57,7 @@ finding = {
         input.enrichment_iam_credentialreport.configuration.accessKey1LastRotated,
         days_between(today_ns, time_parse_iso(input.enrichment_iam_credentialreport.configuration.accessKey1LastRotated))
     ])
-} if {
+} {
     result == "fail"
     count(input.enrichment_iam_accesskeys) > 0
     input.enrichment_iam_credentialreport.configuration.accessKey1Active == true
