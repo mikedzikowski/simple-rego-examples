@@ -92,4 +92,5 @@ security_posture_policies_*/
 
 # Runtime and Process Files
 *.pid
-nohup.outopa
+nohup.out
+opa
