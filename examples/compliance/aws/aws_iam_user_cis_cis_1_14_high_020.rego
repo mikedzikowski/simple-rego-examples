@@ -12,8 +12,8 @@ time_parse_iso(date_string) := time.parse_rfc3339_ns(date_string)
 # Calculate days between two dates
 days_between(date1_ns, date2_ns) := abs(date1_ns - date2_ns) / (((24 * 60) * 60) * 1000000000)
 
-# Today's date in nanoseconds (2026-03-25)
-today_ns := time.parse_rfc3339_ns("2026-03-25T00:00:00Z")
+# Today's date in nanoseconds (dynamic)
+today_ns := time.now_ns()
 
 # Main evaluation rule
 default result := "fail"
