@@ -1,0 +1,45 @@
+# AWS Security Group Template
+aws_security_group:
+  resource_type: "AWS::EC2::SecurityGroup"
+  config_path: "ipPermissions"
+  framework: "CIS AWS Foundations Benchmark"
+
+  # Common patterns for security group policies
+  patterns:
+    unrestricted_access:
+      helper_function: "has_unrestricted_access"
+      helper_description: "Check for unrestricted access (0.0.0.0/0 or ::/0)"
+      conditions:
+        - "some rule in input.configuration.ipPermissions"
+        - "has_unrestricted_cidr(rule)"
+        - "matches_target_criteria(rule)"
+
+      additional_helpers:
+        - name: "has_unrestricted_cidr"
+          description: "Helper to check if a rule has unrestricted CIDR blocks"
+          conditions:
+            - "some range in rule.ipRanges"
+            - "range.cidrIp == \"0.0.0.0/0\""
+        - name: "has_unrestricted_cidr"
+          description: "Helper for IPv6 unrestricted CIDR"
+          conditions:
+            - "some range in rule.ipv6Ranges"
+            - "range.cidrIpv6 == \"::/0\""
+
+# AWS IAM Templates
+aws_iam:
+  resource_type: "AWS::IAM::User"
+  config_path: "enrichment_iam_credentialreport"
+  framework: "CIS AWS Foundations Benchmark"
+
+# Azure Templates
+azure_security:
+  resource_type: "Microsoft.Compute/virtualMachines"
+  config_path: "configuration"
+  framework: "CIS Microsoft Azure Foundations Benchmark"
+
+# GCP Templates
+gcp_security:
+  resource_type: "compute.googleapis.com/Instance"
+  config_path: "configuration"
+  framework: "CIS Google Cloud Platform Foundation Benchmark"

@@ -1,0 +1,12 @@
+# Rego Policy Generator Requirements
+fastapi==0.104.1
+uvicorn==0.24.0
+pydantic==2.4.2
+jinja2==3.1.2
+click==8.1.7
+requests==2.31.0
+pyyaml==6.0.1
+pytest==7.4.2
+pytest-asyncio==0.21.1
+black==23.9.1
+flake8==6.1.0

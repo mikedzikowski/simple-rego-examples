@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  rego-generator:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./output:/app/output
+      - ./workspace:/app/workspace
+    environment:
+      - PYTHONPATH=/app
+    command: api
+
+  rego-cli:
+    build: .
+    volumes:
+      - ./output:/app/output
+      - ./workspace:/app/workspace
+      - ./configs:/app/configs
+    environment:
+      - PYTHONPATH=/app
+    stdin_open: true
+    tty: true
+    command: interactive
